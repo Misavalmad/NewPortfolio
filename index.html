@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Misael Valencia | Portfolio</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=VT323&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.77/Tone.js"></script>
+
+    <style>
+        :root {
+            --bg-color: #0A0A0A;
+            --primary-neon: #00FFFF;
+            --secondary-neon: #FF00FF;
+            --text-color: #EAEAEA;
+            --border-glow: 0 0 5px var(--primary-neon), 0 0 10px var(--primary-neon), 0 0 15px var(--primary-neon);
+            --text-glow: 0 0 2px var(--secondary-neon);
+        }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Share Tech Mono', monospace;
+            background-image:
+                linear-gradient(rgba(10, 10, 10, 0.95), rgba(10, 10, 10, 0.95)),
+                url('https://www.transparenttextures.com/patterns/scan-lines.png');
+            cursor: crosshair;
+        }
+        a, button {
+            cursor: pointer;
+        }
+        .font-glitch { font-family: 'VT323', monospace; text-transform: uppercase; }
+        .glitch-text {
+            position: relative;
+            text-shadow: 0.05em 0 0 rgba(255,0,0,0.75), -0.05em -0.025em 0 rgba(0,255,0,0.75), 0.025em 0.05em 0 rgba(0,0,255,0.75);
+            animation: glitch 500ms infinite;
+        }
+        .glitch-text:hover { animation: none; }
+        @keyframes glitch {
+            0% { text-shadow: 0.05em 0 0 rgba(255,0,0,0.75), -0.05em -0.025em 0 rgba(0,255,0,0.75), 0.025em 0.05em 0 rgba(0,0,255,0.75); }
+            14% { text-shadow: 0.05em 0 0 rgba(255,0,0,0.75), -0.05em -0.025em 0 rgba(0,255,0,0.75), 0.025em 0.05em 0 rgba(0,0,255,0.75); }
+            15% { text-shadow: -0.05em -0.025em 0 rgba(255,0,0,0.75), 0.025em 0.05em 0 rgba(0,255,0,0.75), -0.05em -0.025em 0 rgba(0,0,255,0.75); }
+            49% { text-shadow: -0.05em -0.025em 0 rgba(255,0,0,0.75), 0.025em 0.05em 0 rgba(0,255,0,0.75), -0.05em -0.025em 0 rgba(0,0,255,0.75); }
+            50% { text-shadow: 0.025em 0.05em 0 rgba(255,0,0,0.75), 0.05em 0 0 rgba(0,255,0,0.75), 0 -0.05em 0 rgba(0,0,255,0.75); }
+            99% { text-shadow: 0.025em 0.05em 0 rgba(255,0,0,0.75), 0.05em 0 0 rgba(0,255,0,0.75), 0 -0.05em 0 rgba(0,0,255,0.75); }
+            100% { text-shadow: -0.025em 0 0 rgba(255,0,0,0.75), -0.025em -0.025em 0 rgba(0,255,0,0.75), -0.025em -0.05em 0 rgba(0,0,255,0.75); }
+        }
+        .neon-border {
+            border: 2px solid var(--primary-neon);
+            box-shadow: var(--border-glow);
+            transition: all 0.3s ease-in-out;
+        }
+        .neon-border:hover { box-shadow: 0 0 10px var(--primary-neon), 0 0 20px var(--primary-neon), 0 0 30px var(--primary-neon); }
+        .neon-button {
+            color: var(--primary-neon);
+            border: 1px solid var(--primary-neon);
+            text-shadow: 0 0 5px var(--primary-neon);
+            transition: all 0.3s ease-in-out;
+            background-color: transparent;
+        }
+        .neon-button:hover {
+            background-color: var(--primary-neon);
+            color: var(--bg-color);
+            box-shadow: var(--border-glow);
+        }
+        .section-container {
+            border: 1px solid var(--primary-neon);
+            background-color: rgba(0, 255, 255, 0.05);
+            backdrop-filter: blur(5px);
+        }
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in-section.is-visible { opacity: 1; transform: translateY(0); }
+        .skill-icon {
+            object-fit: contain;
+            filter: invert(1) drop-shadow(0 0 3px var(--primary-neon));
+            transition: all 0.3s ease-in-out;
+        }
+        .skill-item:hover .skill-icon {
+            transform: scale(1.1);
+            filter: invert(1) drop-shadow(0 0 8px var(--secondary-neon));
+        }
+
+        /* Terminal Styles */
+        #terminal {
+            height: 400px;
+            background-color: rgba(0,0,0,0.8);
+            border: 1px solid var(--primary-neon);
+            box-shadow: var(--border-glow);
+            overflow-y: auto;
+            padding: 1rem;
+            font-family: 'Share Tech Mono', monospace;
+        }
+        .terminal-output span { color: var(--primary-neon); }
+        .terminal-input-line { display: flex; align-items: center; }
+        .terminal-prompt { color: var(--secondary-neon); }
+        #terminal-input {
+            background: transparent;
+            border: none;
+            color: var(--text-color);
+            flex-grow: 1;
+            outline: none;
+        }
+        .terminal-cursor {
+            display: inline-block;
+            width: 10px;
+            height: 1.2em;
+            background-color: var(--primary-neon);
+            animation: blink 1s step-end infinite;
+        }
+        @keyframes blink {
+            from, to { background-color: transparent; }
+            50% { background-color: var(--primary-neon); }
+        }
+    </style>
+</head>
+<body class="w-full h-full antialiased">
+    
+    <header class="bg-black/80 backdrop-blur-sm fixed top-0 left-0 right-0 z-50 border-b border-[var(--primary-neon)] shadow-[0_0_15px_rgba(0,255,255,0.5)]">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#hero" class="text-2xl font-glitch" style="color: var(--primary-neon); text-shadow: var(--text-glow);">M.V.</a>
+            <div class="hidden md:flex space-x-8">
+                <a href="#terminal-section" class="hover:text-[var(--primary-neon)] transition-colors duration-300">_TERMINAL</a>
+                <a href="#projects" class="hover:text-[var(--primary-neon)] transition-colors duration-300">_PROJECTS</a>
+                <a href="#skills" class="hover:text-[var(--primary-neon)] transition-colors duration-300">_SKILLS</a>
+                <a href="#contact" class="hover:text-[var(--primary-neon)] transition-colors duration-300">_CONTACT</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden text-2xl text-[var(--primary-neon)]">&#9776;</button>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden">
+            <a href="#terminal-section" class="block text-center py-2 px-4 text-sm hover:bg-[var(--primary-neon)] hover:text-black">TERMINAL</a>
+            <a href="#projects" class="block text-center py-2 px-4 text-sm hover:bg-[var(--primary-neon)] hover:text-black">PROJECTS</a>
+            <a href="#skills" class="block text-center py-2 px-4 text-sm hover:bg-[var(--primary-neon)] hover:text-black">SKILLS</a>
+            <a href="#contact" class="block text-center py-2 px-4 text-sm hover:bg-[var(--primary-neon)] hover:text-black">CONTACT</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6">
+        <section id="hero" class="min-h-screen flex flex-col justify-center items-center text-center">
+            <h1 id="glitch-title" class="text-5xl md:text-7xl lg:text-8xl font-glitch mb-4 text-white" data-text="Misael Valencia">Misael Valencia</h1>
+            <p class="text-lg md:text-2xl text-[var(--primary-neon)]" style="text-shadow: var(--text-glow);">Computational Technologies Engineer // Software & Game Development</p>
+            <a href="#terminal-section" class="mt-8 px-8 py-3 neon-button font-bold">Initialize Terminal</a>
+        </section>
+
+        <!-- Terminal Section -->
+        <section id="terminal-section" class="py-20 fade-in-section">
+            <h2 class="text-4xl font-glitch text-center mb-12" style="color: var(--primary-neon);">[ Interactive Console ]</h2>
+            <div id="terminal" class="max-w-4xl mx-auto rounded-lg" onclick="document.getElementById('terminal-input').focus();">
+                <div id="terminal-output"></div>
+                <div class="terminal-input-line">
+                    <span class="terminal-prompt">user@mvalencia:~$ </span>
+                    <input type="text" id="terminal-input" autocomplete="off" autofocus>
+                    <span class="terminal-cursor"></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-20 fade-in-section">
+            <h2 class="text-4xl font-glitch text-center mb-12" style="color: var(--primary-neon);">[ Featured Projects ]</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="section-container p-6 rounded-lg flex flex-col h-full transform hover:-translate-y-2 transition-transform duration-300">
+                    <img src="https://placehold.co/600x400/00FFFF/0A0A0A?text=Glitch+Protocol" alt="Glitch Protocol" class="rounded mb-4">
+                    <h3 class="text-2xl font-glitch mb-2" style="color: var(--secondary-neon);">Glitch Protocol</h3>
+                    <p class="mb-4 flex-grow">Top-down shooter with a glitch aesthetic, built with Python and Pygame. Features dash, parry, and roguelike-style shooting mechanics.</p>
+                    <div class="mt-auto flex gap-4">
+                        <a href="#" class="w-full text-center px-4 py-2 neon-button text-sm">Download</a>
+                        <a href="#" class="w-full text-center px-4 py-2 neon-button text-sm">GitHub</a>
+                    </div>
+                </div>
+                <div class="section-container p-6 rounded-lg flex flex-col h-full transform hover:-translate-y-2 transition-transform duration-300">
+                    <img src="https://placehold.co/600x400/FF00FF/0A0A0A?text=UE5+Game" alt="Unreal Engine 5 Game" class="rounded mb-4">
+                    <h3 class="text-2xl font-glitch mb-2" style="color: var(--secondary-neon);">Unreal Engine 5 Game</h3>
+                    <p class="mb-4 flex-grow">Coming Soon: Development of a video game in Unreal Engine 5 using Blueprints and C++.</p>
+                    <div class="mt-auto">
+                        <a href="#" class="w-full block text-center px-4 py-2 neon-button text-sm">GitHub</a>
+                    </div>
+                </div>
+                <div class="section-container p-6 rounded-lg flex flex-col h-full transform hover:-translate-y-2 transition-transform duration-300">
+                    <img src="https://placehold.co/600x400/00FFFF/0A0A0A?text=DB+Management" alt="Database Management" class="rounded mb-4">
+                    <h3 class="text-2xl font-glitch mb-2" style="color: var(--secondary-neon);">Database Management</h3>
+                    <p class="mb-4 flex-grow">Coming Soon: Design and development of a database to manage clients and sales with MySQL.</p>
+                    <div class="mt-auto">
+                        <a href="#" class="w-full block text-center px-4 py-2 neon-button text-sm">GitHub</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-20 fade-in-section">
+            <h2 class="text-4xl font-glitch text-center mb-12" style="color: var(--primary-neon);">[ Technical Skills ]</h2>
+            <div class="max-w-4xl mx-auto section-container p-8 rounded-lg">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                    <div class="skill-item flex flex-col items-center justify-center gap-2"><img src="https://cdn.worldvectorlogo.com/logos/python-5.svg" alt="Python Logo" class="h-16 w-16 skill-icon"><h4 class="font-bold">Python</h4></div>
+                    <div class="skill-item flex flex-col items-center justify-center gap-2"><img src="https://cdn.worldvectorlogo.com/logos/c.svg" alt="C++ Logo" class="h-16 w-16 skill-icon"><h4 class="font-bold">C++</h4></div>
+                    <div class="skill-item flex flex-col items-center justify-center gap-2"><img src="https://cdn.worldvectorlogo.com/logos/javascript-1.svg" alt="JavaScript Logo" class="h-16 w-16 skill-icon"><h4 class="font-bold">JavaScript</h4></div>
+                    <div class="skill-item flex flex-col items-center justify-center gap-2"><img src="https://cdn.worldvectorlogo.com/logos/unreal-engine-1.svg" alt="Unreal Engine Logo" class="h-16 w-16 skill-icon"><h4 class="font-bold">Unreal Engine</h4></div>
+                    <div class="skill-item flex flex-col items-center justify-center gap-2"><img src="https://cdn.worldvectorlogo.com/logos/react-2.svg" alt="React Logo" class="h-16 w-16 skill-icon"><h4 class="font-bold">React</h4></div>
+                    <div class="skill-item flex flex-col items-center justify-center gap-2"><img src="https://cdn.worldvectorlogo.com/logos/tailwind-css-2.svg" alt="Tailwind CSS Logo" class="h-16 w-16 skill-icon"><h4 class="font-bold">Tailwind CSS</h4></div>
+                    <div class="skill-item flex flex-col items-center justify-center gap-2"><img src="https://www.svgrepo.com/show/303251/mysql-logo.svg" alt="MySQL Logo" class="h-16 w-16 skill-icon"><h4 class="font-bold">MySQL</h4></div>
+                    <div class="skill-item flex flex-col items-center justify-center gap-2"><img src="https://cdn.worldvectorlogo.com/logos/git-icon.svg" alt="Git Logo" class="h-16 w-16 skill-icon"><h4 class="font-bold">Git</h4></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 text-center fade-in-section">
+            <h2 class="text-4xl font-glitch mb-4" style="color: var(--primary-neon);">[ Contact ]</h2>
+            <p class="max-w-md mx-auto mb-8">Interested in collaborating or have a question? Feel free to reach out.</p>
+            <div class="flex justify-center gap-6">
+                <a href="mailto:misavalmad@gmail.com" class="px-6 py-3 neon-button font-bold">Send Email</a>
+                <a href="https://www.linkedin.com/in/misael-valencia-madrigal-444168248/" target="_blank" class="px-6 py-3 neon-button font-bold">LinkedIn</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="text-center py-6 border-t border-[var(--primary-neon)]/50">
+        <p class="text-sm">&copy; 2024 Misael Valencia. System Ready.</p>
+    </footer>
+
+    <script>
+        // --- Sound Effects ---
+        let isToneStarted = false;
+        const hoverSynth = new Tone.Synth({ oscillator: { type: 'sine' }, envelope: { attack: 0.005, decay: 0.1, sustain: 0.2, release: 0.2 } }).toDestination();
+        const clickSynth = new Tone.MembraneSynth({ pitchDecay: 0.01, octaves: 3, oscillator: { type: 'sine' }, envelope: { attack: 0.001, decay: 0.2, sustain: 0, release: 0.1 } }).toDestination();
+        function startAudioContext() {
+            if (!isToneStarted) {
+                Tone.start();
+                isToneStarted = true;
+                document.body.removeEventListener('click', startAudioContext);
+                document.body.removeEventListener('keydown', startAudioContext);
+            }
+        }
+        document.body.addEventListener('click', startAudioContext);
+        document.body.addEventListener('keydown', startAudioContext);
+        document.querySelectorAll('a, button').forEach(elem => {
+            elem.addEventListener('mouseenter', () => { if(isToneStarted) hoverSynth.triggerAttackRelease("C5", "16n"); });
+            elem.addEventListener('click', () => { if(isToneStarted) clickSynth.triggerAttackRelease("C3", "8n"); });
+        });
+        
+        // --- Glitch Effect ---
+        const glitchTitle = document.getElementById('glitch-title');
+        const originalText = glitchTitle.dataset.text;
+        const chars = "!<>-_\\/[]{}—=+*^?#________";
+        let intervalId = null;
+        const startGlitch = () => {
+            let iteration = 0;
+            clearInterval(intervalId);
+            intervalId = setInterval(() => {
+                glitchTitle.innerText = originalText.split("").map((letter, index) => {
+                    if (index < iteration) return originalText[index];
+                    return chars[Math.floor(Math.random() * chars.length)];
+                }).join("");
+                if (iteration >= originalText.length) clearInterval(intervalId);
+                iteration += 1 / 3;
+            }, 30);
+        };
+        startGlitch();
+        glitchTitle.addEventListener('mouseover', startGlitch);
+
+        // --- Mobile Menu ---
+        document.getElementById('mobile-menu-button').addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+
+        // --- Fade In Animation ---
+        const sections = document.querySelectorAll('.fade-in-section');
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+            });
+        }, { threshold: 0.1 });
+        sections.forEach(section => observer.observe(section));
+
+        // --- Terminal Logic ---
+        const terminalOutput = document.getElementById('terminal-output');
+        const terminalInput = document.getElementById('terminal-input');
+        const commandHistory = [];
+        let historyIndex = -1;
+
+        const welcomeMessage = "Type 'help' to see the list of available commands.\n";
+
+        function typeWriter(text, i = 0) {
+            if (i < text.length) {
+                terminalOutput.innerHTML += text.charAt(i);
+                terminalOutput.scrollTop = terminalOutput.scrollHeight;
+                setTimeout(() => typeWriter(text, i + 1), 15);
+            }
+        }
+        
+        typeWriter(welcomeMessage);
+
+        terminalInput.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter') {
+                const command = this.value.trim().toLowerCase();
+                commandHistory.push(command);
+                historyIndex = commandHistory.length;
+                
+                const outputLine = document.createElement('div');
+                outputLine.innerHTML = `<span class="terminal-prompt">user@mvalencia:~$ </span>${command}`;
+                terminalOutput.appendChild(outputLine);
+                
+                processCommand(command);
+                this.value = '';
+                terminalOutput.scrollTop = terminalOutput.scrollHeight;
+            } else if (e.key === 'ArrowUp') {
+                if (historyIndex > 0) {
+                    historyIndex--;
+                    this.value = commandHistory[historyIndex];
+                }
+            } else if (e.key === 'ArrowDown') {
+                 if (historyIndex < commandHistory.length - 1) {
+                    historyIndex++;
+                    this.value = commandHistory[historyIndex];
+                } else {
+                    this.value = '';
+                }
+            }
+        });
+
+        function processCommand(command) {
+            const output = document.createElement('div');
+            output.classList.add('terminal-output');
+            let response = '';
+
+            const commands = {
+                'help': `Available commands:\n<span>about</span> - Shows information about me.\n<span>skills</span> - Lists my technical skills.\n<span>projects</span> - Shows my featured projects.\n<span>contact</span> - Shows my contact information.\n<span>social</span> - Links to my social media.\n<span>clear</span> - Clears the terminal.`,
+                'about': `Passionate about creating solutions and interactive experiences. As a technologies engineer, my focus is on the intersection of robust software and immersive game development. I'm constantly seeking new challenges to apply my skills in C++, Python, and Unreal Engine, transforming complex ideas into functional and engaging digital realities.`,
+                'skills': `My skills include: <span>Python, C++, JavaScript, Unreal Engine, React, Tailwind CSS, MySQL, Git</span>.`,
+                'projects': `1. <span>Glitch Protocol:</span> Top-down shooter made with Python and Pygame.\n2. <span>UE5 Game:</span> In development, using Blueprints and C++.\n3. <span>DB Management:</span> Database design with MySQL.`,
+                'contact': `You can contact me at:\nEmail: <a href="mailto:misavalmad@gmail.com" class="text-secondary-neon">misavalmad@gmail.com</a>`,
+                'social': `LinkedIn: <a href="https://www.linkedin.com/in/misael-valencia-madrigal-444168248/" target="_blank" class="text-secondary-neon">linkedin.com/in/misael-valencia-madrigal-444168248/</a>\nGitHub: Coming soon.`,
+                'clear': () => { terminalOutput.innerHTML = ''; return ''; }
+            };
+
+            if(typeof commands[command] === 'function') {
+                response = commands[command]();
+            } else {
+                response = commands[command] || `Command not found: ${command}. Type 'help' to see the list of commands.`;
+            }
+
+            output.innerHTML = response.replace(/\n/g, '<br>');
+            terminalOutput.appendChild(output);
+        }
+
+    </script>
+</body>
+</html>
