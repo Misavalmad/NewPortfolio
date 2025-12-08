@@ -1,0 +1,144 @@
+:root {
+    --bg-color: #0A0A0A;
+    --primary-neon: #00FFFF;
+    --secondary-neon: #FF00FF;
+    --text-color: #EAEAEA;
+    --border-glow: 0 0 5px var(--primary-neon), 0 0 10px var(--primary-neon), 0 0 15px var(--primary-neon);
+    --text-glow: 0 0 2px var(--secondary-neon);
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Share Tech Mono', monospace;
+    background-image:
+        linear-gradient(rgba(10, 10, 10, 0.95), rgba(10, 10, 10, 0.95)),
+        url('https://www.transparenttextures.com/patterns/scan-lines.png');
+    cursor: crosshair;
+}
+
+a, button {
+    cursor: pointer;
+}
+
+.font-glitch {
+    font-family: 'VT323', monospace;
+    text-transform: uppercase;
+}
+
+.glitch-text {
+    position: relative;
+    text-shadow: 0.05em 0 0 rgba(255,0,0,0.75), -0.05em -0.025em 0 rgba(0,255,0,0.75), 0.025em 0.05em 0 rgba(0,0,255,0.75);
+    animation: glitch 500ms infinite;
+}
+
+.glitch-text:hover {
+    animation: none;
+}
+
+@keyframes glitch {
+    0% { text-shadow: 0.05em 0 0 rgba(255,0,0,0.75), -0.05em -0.025em 0 rgba(0,255,0,0.75), 0.025em 0.05em 0 rgba(0,0,255,0.75); }
+    14% { text-shadow: 0.05em 0 0 rgba(255,0,0,0.75), -0.05em -0.025em 0 rgba(0,255,0,0.75), 0.025em 0.05em 0 rgba(0,0,255,0.75); }
+    15% { text-shadow: -0.05em -0.025em 0 rgba(255,0,0,0.75), 0.025em 0.05em 0 rgba(0,255,0,0.75), -0.05em -0.025em 0 rgba(0,0,255,0.75); }
+    49% { text-shadow: -0.05em -0.025em 0 rgba(255,0,0,0.75), 0.025em 0.05em 0 rgba(0,255,0,0.75), -0.05em -0.025em 0 rgba(0,0,255,0.75); }
+    50% { text-shadow: 0.025em 0.05em 0 rgba(255,0,0,0.75), 0.05em 0 0 rgba(0,255,0,0.75), 0 -0.05em 0 rgba(0,0,255,0.75); }
+    99% { text-shadow: 0.025em 0.05em 0 rgba(255,0,0,0.75), 0.05em 0 0 rgba(0,255,0,0.75), 0 -0.05em 0 rgba(0,0,255,0.75); }
+    100% { text-shadow: -0.025em 0 0 rgba(255,0,0,0.75), -0.025em -0.025em 0 rgba(0,255,0,0.75), -0.025em -0.05em 0 rgba(0,0,255,0.75); }
+}
+
+.neon-border {
+    border: 2px solid var(--primary-neon);
+    box-shadow: var(--border-glow);
+    transition: all 0.3s ease-in-out;
+}
+
+.neon-border:hover {
+    box-shadow: 0 0 10px var(--primary-neon), 0 0 20px var(--primary-neon), 0 0 30px var(--primary-neon);
+}
+
+.neon-button {
+    color: var(--primary-neon);
+    border: 1px solid var(--primary-neon);
+    text-shadow: 0 0 5px var(--primary-neon);
+    transition: all 0.3s ease-in-out;
+    background-color: transparent;
+}
+
+.neon-button:hover {
+    background-color: var(--primary-neon);
+    color: var(--bg-color);
+    box-shadow: var(--border-glow);
+}
+
+.section-container {
+    border: 1px solid var(--primary-neon);
+    background-color: rgba(0, 255, 255, 0.05);
+    backdrop-filter: blur(5px);
+}
+
+.fade-in-section {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in-section.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.skill-icon {
+    object-fit: contain;
+    filter: invert(1) drop-shadow(0 0 3px var(--primary-neon));
+    transition: all 0.3s ease-in-out;
+}
+
+.skill-item:hover .skill-icon {
+    transform: scale(1.1);
+    filter: invert(1) drop-shadow(0 0 8px var(--secondary-neon));
+}
+
+/* Terminal Styles */
+#terminal {
+    height: 400px;
+    background-color: rgba(0,0,0,0.8);
+    border: 1px solid var(--primary-neon);
+    box-shadow: var(--border-glow);
+    overflow-y: auto;
+    padding: 1rem;
+    font-family: 'Share Tech Mono', monospace;
+}
+
+.terminal-output span {
+    color: var(--primary-neon);
+}
+
+.terminal-input-line {
+    display: flex;
+    align-items: center;
+}
+
+.terminal-prompt {
+    color: var(--secondary-neon);
+}
+
+#terminal-input {
+    background: transparent;
+    border: none;
+    color: var(--text-color);
+    flex-grow: 1;
+    outline: none;
+}
+
+.terminal-cursor {
+    display: inline-block;
+    width: 10px;
+    height: 1.2em;
+    background-color: var(--primary-neon);
+    animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+    from, to { background-color: transparent; }
+    50% { background-color: var(--primary-neon); }
+}
