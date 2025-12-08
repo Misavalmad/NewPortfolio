@@ -1,4 +1,4 @@
-# 🌐 Portfolio - Misael Valencia
+# Portfolio - Misael Valencia
 
 [![Live Demo](https://img.shields.io/badge/demo-online-brightgreen.svg)](https://misaelvalencia.vercel.app/)
 [![GitHub](https://img.shields.io/badge/github-repo-blue.svg)](https://github.com/Misavalmad/NewPortfolio)
@@ -7,16 +7,16 @@
 
 ![Portfolio Preview](https://via.placeholder.com/800x400/0A0A0A/00FFFF?text=Portfolio+Preview)
 
-## ✨ Features
+## Features
 
-- 🎨 **Cyberpunk Design** - Neon aesthetics with glitch effects
-- 💻 **Interactive Terminal** - Fully functional command-line interface
-- 🔊 **Sound Effects** - Immersive audio feedback on interactions
-- 📱 **Fully Responsive** - Optimized for all devices
-- ⚡ **Fast Performance** - Built with modern web technologies
-- 🎯 **SEO Optimized** - Meta tags for social media sharing
+- **Cyberpunk Design** - Neon aesthetics with glitch effects
+- **Interactive Terminal** - Fully functional command-line interface
+- **Sound Effects** - Immersive audio feedback on interactions
+- **Fully Responsive** - Optimized for all devices
+- **Fast Performance** - Built with modern web technologies
+- **SEO Optimized** - Meta tags for social media sharing
 
-## 🛠️ Built With
+## Built With
 
 - **HTML5** - Semantic markup
 - **CSS3** - Custom styles with Tailwind CSS
@@ -24,7 +24,7 @@
 - **Tone.js** - Audio synthesis
 - **Tailwind CSS** - Utility-first CSS framework
 
-## 🚀 Quick Start
+## Quick Start
 
 1. Clone the repository:
 ```bash
@@ -42,7 +42,7 @@ npx http-server
 
 3. Visit `http://localhost:8000`
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 NewPortfolio/
@@ -52,7 +52,7 @@ NewPortfolio/
 └── README.md       # Documentation
 ```
 
-## 🎮 Terminal Commands
+## Terminal Commands
 
 Try these commands in the interactive terminal:
 
@@ -65,7 +65,7 @@ Try these commands in the interactive terminal:
 - `experience` - View my professional background
 - `clear` - Clear the terminal
 
-## 💼 Skills Showcased
+## Skills Showcased
 
 ### Frontend
 - HTML5, CSS3, JavaScript
@@ -80,18 +80,18 @@ Try these commands in the interactive terminal:
 - Git, GitHub
 - Unreal Engine, C++
 
-## 📫 Contact
+## Contact
 
 - **Email:** [misavalmad@gmail.com](mailto:misavalmad@gmail.com)
 - **LinkedIn:** [Misael Valencia](https://www.linkedin.com/in/misael-valencia-madrigal-444168248/)
 - **GitHub:** [@Misavalmad](https://github.com/Misavalmad)
 - **Portfolio:** [misaelvalencia.vercel.app](https://misaelvalencia.vercel.app/)
 
-## 📄 License
+## License
 
 This project is open source and available under the [MIT License](LICENSE).
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - Inspired by cyberpunk aesthetics and terminal interfaces
 - Sound effects powered by Tone.js
@@ -99,4 +99,4 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ---
 
-⭐ **Made with passion by Misael Valencia** | © 2024-2025
+**Made with passion by Misael Valencia** | © 2024-2025
