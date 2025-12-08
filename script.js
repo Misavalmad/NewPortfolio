@@ -24,14 +24,48 @@ function startAudioContext() {
 document.body.addEventListener('click', startAudioContext);
 document.body.addEventListener('keydown', startAudioContext);
 
-document.querySelectorAll('a, button').forEach(elem => {
-    elem.addEventListener('mouseenter', () => { 
-        if(isToneStarted) hoverSynth.triggerAttackRelease("C5", "16n"); 
+// Add sound effects to interactive elements
+function addSoundEffects() {
+    // Buttons and links
+    document.querySelectorAll('a, button').forEach(elem => {
+        elem.addEventListener('mouseenter', () => { 
+            if(isToneStarted) hoverSynth.triggerAttackRelease("C5", "16n"); 
+        });
+        elem.addEventListener('click', () => { 
+            if(isToneStarted) clickSynth.triggerAttackRelease("C3", "8n"); 
+        });
     });
-    elem.addEventListener('click', () => { 
-        if(isToneStarted) clickSynth.triggerAttackRelease("C3", "8n"); 
+
+    // Skill icons
+    document.querySelectorAll('.skill-item').forEach(elem => {
+        elem.addEventListener('mouseenter', () => { 
+            if(isToneStarted) hoverSynth.triggerAttackRelease("D5", "16n"); 
+        });
+        elem.addEventListener('click', () => { 
+            if(isToneStarted) clickSynth.triggerAttackRelease("D3", "8n"); 
+        });
     });
-});
+
+    // Project cards
+    document.querySelectorAll('.section-container').forEach(elem => {
+        elem.addEventListener('mouseenter', () => { 
+            if(isToneStarted) hoverSynth.triggerAttackRelease("E5", "16n"); 
+        });
+    });
+
+    // Navigation menu items
+    document.querySelectorAll('nav a').forEach(elem => {
+        elem.addEventListener('mouseenter', () => { 
+            if(isToneStarted) hoverSynth.triggerAttackRelease("F5", "16n"); 
+        });
+        elem.addEventListener('click', () => { 
+            if(isToneStarted) clickSynth.triggerAttackRelease("F3", "8n"); 
+        });
+    });
+}
+
+// Call after DOM is loaded
+addSoundEffects();
 
 // --- Glitch Effect ---
 const glitchTitle = document.getElementById('glitch-title');
@@ -125,12 +159,12 @@ function processCommand(command) {
 
     const commands = {
         'help': `Available commands:\n<span>about</span> - Shows information about me.\n<span>skills</span> - Lists my technical skills.\n<span>projects</span> - Shows my featured projects.\n<span>contact</span> - Shows my contact information.\n<span>social</span> - Links to my social media.\n<span>experience</span> - Shows my professional experience.\n<span>clear</span> - Clears the terminal.`,
-        'about': `Full Stack Web Developer with a strong foundation in Computational Technologies Engineering. I specialize in creating modern, responsive web applications using React, JavaScript, and cutting-edge frontend technologies. My passion lies at the intersection of elegant code architecture and user-centric design, always seeking to deliver seamless digital experiences.`,
-        'skills': `<span>Frontend:</span> HTML5, CSS3, JavaScript, React, Bootstrap, Tailwind CSS\n<span>Backend & Database:</span> MySQL, SQL\n<span>Tools:</span> Git, GitHub\n<span>Game Development:</span> Unreal Engine, C++`,
+        'about': `Full Stack Web Developer with a strong foundation in Computational Technologies Engineering. I specialize in creating modern, responsive web applications using React, JavaScript, Node.js, and cutting-edge technologies. My passion lies at the intersection of elegant code architecture and user-centric design, always seeking to deliver seamless digital experiences.`,
+        'skills': `<span>Frontend:</span> HTML5, CSS3, JavaScript, React, Bootstrap, Tailwind CSS\n<span>Backend & Database:</span> Node.js, MySQL, SQL\n<span>Tools:</span> Git, GitHub\n<span>Game Development:</span> Unreal Engine, C++`,
         'projects': `1. <span>Weather Dashboard:</span> Interactive weather app with real-time API data.\n2. <span>YouTube MP3 API:</span> Node.js API for converting YouTube videos to MP3.\n3. <span>Portfolio Cyberpunk:</span> This interactive portfolio with terminal features.\n4. <span>Calculator App:</span> Web calculator with clean UI and smooth functionality.\n5. <span>Pensamiento Creativo con IA:</span> AI creative thinking lab project.`,
         'contact': `You can contact me at:\nEmail: <a href="mailto:misavalmad@gmail.com" class="text-secondary-neon">misavalmad@gmail.com</a>\nPhone: Available upon request`,
         'social': `LinkedIn: <a href="https://www.linkedin.com/in/misael-valencia-madrigal-444168248/" target="_blank" class="text-secondary-neon">linkedin.com/in/misael-valencia-madrigal-444168248/</a>\nGitHub: <a href="https://github.com/Misavalmad" target="_blank" class="text-secondary-neon">github.com/Misavalmad</a>`,
-        'experience': `<span>Full Stack Developer</span>\nSpecializing in modern web technologies and scalable application development.\n\n<span>Education:</span>\nComputational Technologies Engineering\n\n<span>Focus Areas:</span>\n• Frontend: React, JavaScript, HTML5, CSS3, Bootstrap, Tailwind CSS\n• Backend & Database: MySQL, SQL\n• Tools: Git, GitHub\n• Game Development: Unreal Engine, C++`,
+        'experience': `<span>Full Stack Developer</span>\nSpecializing in modern web technologies and scalable application development.\n\n<span>Education:</span>\nComputational Technologies Engineering\n\n<span>Focus Areas:</span>\n• Frontend: React, JavaScript, HTML5, CSS3, Bootstrap, Tailwind CSS\n• Backend & Database: Node.js, MySQL, SQL\n• Tools: Git, GitHub\n• Game Development: Unreal Engine, C++`,
         'clear': () => { terminalOutput.innerHTML = ''; return ''; }
     };
 
