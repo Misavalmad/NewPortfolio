@@ -5,8 +5,6 @@
 
 > Cyberpunk-themed interactive portfolio showcasing my work as a Full Stack Web Developer
 
-![Portfolio Preview](https://via.placeholder.com/800x400/0A0A0A/00FFFF?text=Portfolio+Preview)
-
 ## Features
 
 - **Cyberpunk Design** - Neon aesthetics with glitch effects
